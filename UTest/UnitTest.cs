@@ -80,39 +80,6 @@ namespace GeometryLibraryTests
             Assert.Throws<ArgumentException>(() => new Circle(-3.0));
         }
     }
-    public class ShapeTests
-    {
-        private class TestShape : Shape
-        {
-            public override double CalculateArea()
-            {
-                return 42.0; // Возвращаем какое-либо фиктивное значение для тестирования
-            }
-        }
-
-        [Test]
-        public void CalculateArea_AbstractShape_ThrowsNotImplementedException()
-        {
-            // Arrange
-            Shape shape = new Shape(); // Попытка создать экземпляр абстрактного класса
-
-            // Act & Assert
-            Assert.Throws<NotImplementedException>(() => shape.CalculateArea());
-        }
-
-        [Test]
-        public void CalculateArea_ConcreteShape_ReturnsCorrectArea()
-        {
-            // Arrange
-            Shape shape = new TestShape();
-
-            // Act
-            double area = shape.CalculateArea();
-
-            // Assert
-            Assert.AreEqual(42.0, area); // Проверяем, что результат равен ожидаемому значению
-        }
-    }
     [TestFixture]
     public class SquareTests
     {
