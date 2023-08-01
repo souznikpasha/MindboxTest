@@ -3,14 +3,16 @@ using System;
 
 namespace GeometryLibrary
 {
-    public class Shape : IShape
+    // Абстрактный класс Shape представляет базовую абстрактную фигуру и определяет общий интерфейс для всех фигур.
+    // Этот класс реализует интерфейс IShape, который определяет метод для вычисления площади фигуры.
+    public abstract class Shape : IShape
     {
-        // Виртуальный метод для вычисления площади фигуры, будет переопределен в дочерних классах
-        public virtual double CalculateArea()
-        {
-            throw new NotImplementedException();
-        }
+        // Абстрактный метод CalculateArea() не имеет реализации в базовом классе Shape.
+        // Этот метод должен быть реализован в производных классах, чтобы вычислять площадь конкретной фигуры.
+        // Каждый производный класс должен переопределить этот метод в соответствии с его логикой вычисления площади.
+        public abstract double CalculateArea();
     }
+
     public class Circle : Shape
     {
         private double _radius;
@@ -25,6 +27,7 @@ namespace GeometryLibrary
 
             _radius = radius;
         }
+
         // Переопределенный метод для вычисления площади круга
         /// <summary>
         /// Вычисление площади круга
@@ -76,6 +79,7 @@ namespace GeometryLibrary
             double s = (_sideA + _sideB + _sideC) / 2;
             return Math.Sqrt(s * (s - _sideA) * (s - _sideB) * (s - _sideC));
         }
+
         // Метод для проверки, является ли треугольник прямоугольным (по теореме Пифагора)
         /// <summary>
         /// Проверяет является ли треугольник прямоугольным
@@ -90,7 +94,8 @@ namespace GeometryLibrary
             return Math.Abs(2 * Math.Pow(maxSide, 2) - sumSquares) < 0.0001;
         }
     }
-    // Легкость добавление других фигур
+
+    // Пример легкости добавления других фигур
     // Класс Square представляет квадрат и наследует абстрактный класс Shape.
     public class Square : Shape
     {
@@ -108,6 +113,9 @@ namespace GeometryLibrary
         }
 
         // Переопределенный метод CalculateArea() вычисляет площадь квадрата.
+        /// <summary>
+        /// Вычисление площади Квадрата
+        /// </summary>
         public override double CalculateArea()
         {
             return _side * _side;
