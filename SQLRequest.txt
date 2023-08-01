@@ -1,0 +1,4 @@
+SELECT p.ProductName, c.CategoryName
+FROM Products p
+LEFT JOIN Categories c ON p.ProductId = c.ProductId
+ORDER BY p.ProductName;
